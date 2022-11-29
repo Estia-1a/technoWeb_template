@@ -1,5 +1,5 @@
 name: learn-github-actions
-run-name: Checking HTML in commit ${{ github.ref_name }} by ${{ github.actor }}
+run-name: Checking HTML on ${{ github.ref_name }} by ${{ github.actor }} 
 on: [push]
 jobs:
   Validate-HTML-CSS:
@@ -13,13 +13,18 @@ jobs:
           root: ./
           css: true
         continue-on-error: true
-      - name: Save LOGs 
+      - name: Save Logs 
         uses: actions/upload-artifact@v3
         with:
           name: log
           path: log.log
       - name: Set Message
         id: errorMessage
-        if: ${{ failure() && steps.validation.conclusion == 'failure' }}
         run : |
             cat log.log > $GITHUB_STEP_SUMMARY
+      - name: Set info 
+        run: |
+            cat log.log | sed -e 's/file:/file=/' | sed -E 's/"(.*)":([0-9]+).([0-9]+)-([0-9]+).([0-9]+): ([^:]*):/::\6 \1,line=\2,endLine=\4,col=\3,endColumn=\5,title=\6::/' | sed -e 's/\/github\/workspace\/.\///g'
+      - name: Fail on Invalid HTML/CSS
+        if: ${{ steps.validation.outputs.result > 0 }}
+        run: exit 1
