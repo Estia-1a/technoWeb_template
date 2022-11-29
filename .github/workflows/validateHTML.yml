@@ -1,0 +1,19 @@
+name: learn-github-actions
+run-name: Checking HTML in commit ${{ github.ref_name }} by ${{ github.actor }}
+on: [push]
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: HTML Validation 
+        uses: Cyb3r-Jak3/html5validator-action
+        with:
+          root: ./
+          css: true
+        continue-on-error: true
+      - name: Save LOGs 
+        uses: actions/upload-artifact@v3
+        with:
+          name: log
+          path: log.log
