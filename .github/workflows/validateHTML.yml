@@ -2,11 +2,12 @@ name: learn-github-actions
 run-name: Checking HTML in commit ${{ github.ref_name }} by ${{ github.actor }}
 on: [push]
 jobs:
-  check-bats-version:
+  Validate-HTML-CSS:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: HTML Validation 
+        id: validation
         uses: Cyb3r-Jak3/html5validator-action@master
         with:
           root: ./
@@ -17,3 +18,8 @@ jobs:
         with:
           name: log
           path: log.log
+      - name: Set Message
+        id: errorMessage
+        if: ${{ failure() && steps.validation.conclusion == 'failure' }}
+        run : |
+            cat log.log > $GITHUB_STEP_SUMMARY
