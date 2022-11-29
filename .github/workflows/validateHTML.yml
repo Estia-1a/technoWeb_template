@@ -1,4 +1,4 @@
-name: learn-github-actions
+name: HTML-CSS-validation
 run-name: Checking HTML on ${{ github.ref_name }} by ${{ github.actor }} 
 on: [push]
 jobs:
