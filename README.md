@@ -1,3 +1,4 @@
+![HTML VALIDATIOn](../../actions/workflows/validateHTML.yml/badge.svg?branch=main)
 # README 
 
 This is the repository for your project "fil rouge" (Génie Log, Web, SGV). Instruction for the content can be found in your "Livret" 
@@ -13,9 +14,7 @@ This is the repository for your project "fil rouge" (Génie Log, Web, SGV). Inst
 - Demonstrating mastery of other elements of the version control system will result in a higher score
 
 # Validation for Developement Web Statique : HTML and CSS Validation 
-You can find below hint on the HTML and CSS validation of your project. **It does not replace actual validation with the [official validator for the class](https://devweb.estia.fr/validator/)**, but serves as the remainder. The badges can take several minutes to update, wait and refresh to be sure.  
-
-- Current status on the release branch : ![HTML VALIDATIOn](../../actions/workflows/validateHTML.yml/badge.svg?branch=release)
+You can find below hint on the HTML and CSS validation of your project. **It does not replace actual validation with the [official validator for the class](https://devweb.estia.fr/validator/)**, but serves as the remainder. The badges can take several minutes to update, wait and refresh to be sure. 
 - Current status the main branch : ![HTML VALIDATIOn](../../actions/workflows/validateHTML.yml/badge.svg?branch=main)
 
 You can also [check the accessibility of your website](https://devweb.estia.fr/accessibility/) 
